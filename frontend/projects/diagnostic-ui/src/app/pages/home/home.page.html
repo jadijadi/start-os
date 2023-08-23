@@ -63,6 +63,24 @@
           </ion-button>
         </div>
       </ng-container>
+      <ng-container>
+        <h2
+          style="
+            padding-bottom: 16px;
+            font-size: calc(1vw + 14px);
+            font-weight: bold;
+          "
+        >
+          StartOS Status:
+        </h2>
+        <div class="code-block">
+          <code>
+            <ion-text color="warning">
+              {{ osstatus.data.details }} some info
+            </ion-text>
+          </code>
+        </div>
+      </ng-container>
     </ng-container>
 
     <ng-template #refresh>

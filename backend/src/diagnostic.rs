@@ -13,7 +13,7 @@ use crate::system::SYSTEMD_UNIT;
 use crate::util::display_none;
 use crate::Error;
 
-#[command(subcommands(error, logs, exit, restart, forget_disk, disk, rebuild))]
+#[command(subcommands(error, logs, exit, restart, forget_disk, disk, rebuild, osstatus))]
 pub fn diagnostic() -> Result<(), Error> {
     Ok(())
 }
@@ -21,6 +21,11 @@ pub fn diagnostic() -> Result<(), Error> {
 #[command]
 pub fn error(#[context] ctx: DiagnosticContext) -> Result<Arc<RpcError>, Error> {
     Ok(ctx.error.clone())
+}
+
+#[command]
+pub fn osstatus(#[context] ctx: DiagnosticContext) -> Result<String, Error> {
+    Ok("This comes from backend".to_string())
 }
 
 #[command(rpc_only)]

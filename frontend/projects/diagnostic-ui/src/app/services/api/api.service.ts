@@ -7,10 +7,15 @@ export abstract class ApiService {
   abstract repairDisk(): Promise<void>
   abstract systemRebuild(): Promise<void>
   abstract getLogs(params: ServerLogsReq): Promise<LogsRes>
+  abstract getOSStatus(): Promise<GetOSStatusRes>
 }
 
 export interface GetErrorRes {
   code: number
   message: string
+  data: { details: string }
+}
+
+export interface GetOSStatusRes {
   data: { details: string }
 }

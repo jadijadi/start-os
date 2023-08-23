@@ -5,7 +5,7 @@ import {
   RpcError,
   RPCOptions,
 } from '@start9labs/shared'
-import { ApiService, GetErrorRes } from './api.service'
+import { ApiService, GetErrorRes, GetOSStatusRes } from './api.service'
 import { LogsRes, ServerLogsReq } from '@start9labs/shared'
 
 @Injectable()
@@ -15,6 +15,13 @@ export class LiveApiService implements ApiService {
   async getError(): Promise<GetErrorRes> {
     return this.rpcRequest<GetErrorRes>({
       method: 'diagnostic.error',
+      params: {},
+    })
+  }
+
+  async getOSStatus(): Promise<GetOSStatusRes> {
+    return this.rpcRequest<GetOSStatusRes>({
+      method: 'diagnostic.osstatus',
       params: {},
     })
   }

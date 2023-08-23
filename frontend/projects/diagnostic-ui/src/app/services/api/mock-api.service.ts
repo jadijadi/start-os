@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { pauseFor } from '@start9labs/shared'
-import { ApiService, GetErrorRes } from './api.service'
+import { ApiService, GetErrorRes, GetOSStatusRes } from './api.service'
 import { LogsRes, ServerLogsReq, Log } from '@start9labs/shared'
 
 @Injectable()
@@ -10,6 +10,13 @@ export class MockApiService implements ApiService {
     return {
       code: 15,
       message: 'Unknown server',
+      data: { details: 'Some details about the error here' },
+    }
+  }
+
+  async getOSStatus(): Promise<GetOSStatusRes> {
+    await pauseFor(1000)
+    return {
       data: { details: 'Some details about the error here' },
     }
   }

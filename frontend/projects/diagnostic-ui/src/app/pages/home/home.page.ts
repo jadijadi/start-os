@@ -16,6 +16,7 @@ export class HomePage {
   }
   solutions: string[] = []
   restarted = false
+  osstatus = { data: { details: 'waiting for API results...' } }
 
   constructor(
     private readonly loadingCtrl: LoadingController,
@@ -25,6 +26,7 @@ export class HomePage {
 
   async ngOnInit() {
     try {
+      this.osstatus = await this.api.getOSStatus()
       const error = await this.api.getError()
       // incorrect drive
       if (error.code === 15) {
